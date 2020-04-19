@@ -602,7 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerLevel: 25
   countText: {fileID: 835189089}
-  winText: {fileID: 0}
+  winText: {fileID: 1265798619}
 --- !u!1001 &494873533
 PrefabInstance:
   m_ObjectHideFlags: 0
