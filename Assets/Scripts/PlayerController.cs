@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public float powerLevel;
     public Text countText;
+    public Text winText;
 
     private Rigidbody rb;
     private int count;
@@ -17,7 +18,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
-        setCountText();
+        setCountText(createCountText());
+        setWinText("");
     }
 
     // 物理演算を呼び出す直前に実行される
@@ -36,11 +38,22 @@ public class PlayerController : MonoBehaviour
             return;
         other.gameObject.SetActive(false);
         count += 1;
-        setCountText();
+        setCountText(createCountText());
+        if (count >= 12)
+            setWinText("WIN!!");
     }
 
-    void setCountText()
+    void setCountText(string text)
     {
-        countText.text = "Count: " + count.ToString();
+        countText.text = text;
+    }
+    void setWinText(string text)
+    {
+        winText.text = text;
+    }
+
+    string createCountText()
+    {
+        return "Count: " + count.ToString();
     }
 }
