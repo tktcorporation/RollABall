@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
 
     public float powerLevel;
+    public Text countText;
+
     private Rigidbody rb;
     private int count;
 
@@ -14,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        setCountText();
     }
 
     // 物理演算を呼び出す直前に実行される
@@ -32,5 +36,11 @@ public class PlayerController : MonoBehaviour
             return;
         other.gameObject.SetActive(false);
         count += 1;
+        setCountText();
+    }
+
+    void setCountText()
+    {
+        countText.text = "Count: " + count.ToString();
     }
 }
