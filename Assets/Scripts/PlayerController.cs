@@ -7,17 +7,13 @@ public class PlayerController : MonoBehaviour
 
     public float powerLevel;
     private Rigidbody rb;
+    private int count;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        count = 0;
     }
 
     // 物理演算を呼び出す直前に実行される
@@ -32,9 +28,9 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.CompareTag("PickUp"))
-        {
-            other.gameObject.SetActive(false);
-        }
+        if (!other.gameObject.CompareTag("PickUp"))
+            return;
+        other.gameObject.SetActive(false);
+        count += 1;
     }
 }
